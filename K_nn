@@ -6,8 +6,10 @@ from sklearn.metrics import classification_report
 from rdkit import Chem
 from rdkit.Chem import AllChem
 
-# Load data (assuming it's stored in a CSV file)
+# Load data
 data = pd.read_csv("tested_molecules.csv")
+untested_data = pd.read_csv("untested_molecules-3.csv")
+
 data.columns = ["SMILES", "PKM2_inhibition", "ERK2_inhibition"]
 
 # Convert inhibition columns to integers
@@ -15,7 +17,6 @@ data["PKM2_inhibition"] = data["PKM2_inhibition"].astype(int)
 data["ERK2_inhibition"] = data["ERK2_inhibition"].astype(int)
 
 # Preprocessing for KNN
-# Convert SMILES strings to numerical features (e.g., molecular fingerprints)
 # Function to convert SMILES to Morgan fingerprints
 def smiles_to_fingerprint(smiles, radius=2, n_bits=2048):
     mol = Chem.MolFromSmiles(smiles)
@@ -55,3 +56,36 @@ knn_report = classification_report(y_test_knn, knn_predictions, target_names=["P
 
 print("K Nearest Neighbors Model:")
 print(knn_report)
+
+# Predicting for untested molecules
+untested_data.columns = ["SMILES", "PKM2_inhibition", "ERK2_inhibition"]
+
+# Preprocessing untested data
+untested_data['features'] = untested_data['SMILES'].apply(smiles_to_fingerprint)
+untested_data = untested_data.dropna(subset=['features'])
+
+# Convert list of arrays to 2D array
+X_untested = np.array(untested_data['features'].tolist())
+
+# Predict the inhibition properties for the untested molecules
+untested_predictions = knn_classifier.predict(X_untested)
+
+# Fill the predictions in the untested_data DataFrame
+untested_data['PKM2_inhibition'] = untested_predictions[:, 0]
+untested_data['ERK2_inhibition'] = untested_predictions[:, 1]
+
+# Summary of the predictions
+pkm2_inhibition_count = untested_data['PKM2_inhibition'].value_counts()
+erk2_inhibition_count = untested_data['ERK2_inhibition'].value_counts()
+
+print("\nPredicted PKM2 inhibition summary:")
+print(pkm2_inhibition_count)
+
+print("\nPredicted ERK2 inhibition summary:")
+print(erk2_inhibition_count)
+
+# Save the results to a new CSV file
+untested_data[['SMILES', 'PKM2_inhibition', 'ERK2_inhibition']].to_csv("predicted_untested_molecules.csv", index=False)
+
+sorted_data = untested_data[(untested_data['PKM2_inhibition'] == 1) & (untested_data['ERK2_inhibition'] == 0)]
+print(sorted_data[['SMILES', 'PKM2_inhibition', 'ERK2_inhibition']])
