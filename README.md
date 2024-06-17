@@ -27,7 +27,7 @@ A grid search was executed to find the best parameters, after which the Random F
 * untested_molecules.csv
   - A list of all molecules that the final algorithm determines for if it inhibits ERK2 or PKM2.
 * prediction_untested_molecules.csv
-  - Untested_molecules.csv with the inhibition prediction of the final model.
+  - Untested_molecules.csv with the inhibition prediction of the final model added.
 
 
 - - -
