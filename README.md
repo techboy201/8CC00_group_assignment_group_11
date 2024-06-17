@@ -12,13 +12,14 @@ A grid search was executed to find the best parameters, after which the Random F
 
 ## Repository Structure
 * Grid_search_random_forest
-  - Executes a grid search to find the best values for the parameters
+  - Performs a grid search to find the best values for the parameters.
 * Final Random Forest
-  - Executes the random forest algorithm on the untested molecules.
+  - Performs the random forest algorithm on the untested molecules.
+  - Uses the parameters found from Grid_search_random_forest.
 * K_nn
-  - executes the k-NN algorithm
+  - Performs the k-NN algorithm.
 * CNN
-  - Executes the CNN algorithm
+  - Performs the CNN algorithm.
 
 
 - - -
