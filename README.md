@@ -22,6 +22,12 @@ A grid search was executed to find the best parameters, after which the Random F
   - Performs the CNN algorithm.
 * Group assignment Annemijn Gwen
   - Performs an exploratory data analasys on the tested molecule file.
+* tested_molecules.csv
+  - All molecules to be used for the training of the ML model
+* untested_molecules.csv
+  - A list of all molecules that the final algorithm determines for if it inhibits ERK2 or PKM2.
+* prediction_untested_molecules.csv
+  - Untested_molecules.csv with the inhibition prediction of the final model.
 
 
 - - -
