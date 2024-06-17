@@ -11,15 +11,17 @@ After all three were tested, the Random Forest algorithm was chosen to be execut
 A grid search was executed to find the best parameters, after which the Random Forest algorithm was applied to the untested file.
 
 ## Repository Structure
-* Grid_search_random_forest
+* Random Forest Grid Search
   - Performs a grid search to find the best values for the parameters.
 * Final Random Forest
   - Performs the random forest algorithm on the untested molecules.
-  - Uses the parameters found from Grid_search_random_forest.
+  - Uses the parameters found from Random Forest Grid Search.
 * K_nn
   - Performs the k-NN algorithm.
 * CNN
   - Performs the CNN algorithm.
+* Group assignment Annemijn Gwen
+  - Performs an exploratory data analasys on the tested molecule file.
 
 
 - - -
