@@ -11,16 +11,16 @@ After all three were tested, the Random Forest algorithm was chosen to be execut
 A grid search was executed to find the best parameters, after which the Random Forest algorithm was applied to the untested file.
 
 ## Repository Structure
-* Random Forest Grid Search
+* Random Forest Grid Search.ipynb
   - Performs a grid search to find the best values for the parameters.
-* Final Random Forest
+* Final Random Forest.ipynb
   - Performs the random forest algorithm on the untested molecules.
   - Uses the parameters found from Random Forest Grid Search.
-* K_nn
+* K_nn.ipynb
   - Performs the k-NN algorithm.
-* CNN
+* CNN.ipynb
   - Performs the CNN algorithm.
-* Group assignment Annemijn Gwen
+* EDA.ipynb
   - Performs an exploratory data analasys on the tested molecule file.
 * tested_molecules.csv
   - All molecules to be used for the training of the ML model
